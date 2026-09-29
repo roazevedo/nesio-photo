@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-29T00:00:00Z",
+  "title": "Design System: Nésio Photo — Câmara Escura",
+  "extensions": {
+    "colorMeta": {
+      "bg":          { "role": "neutral", "displayName": "Câmara Black", "canonical": "#0c0a08", "tonalRamp": ["#060504","#0c0a08","#16110c","#221a12","#3a2c1e","#6b5238","#a78a68","#e7d9c4"] },
+      "ink":         { "role": "neutral", "displayName": "Paper White", "canonical": "#f4ede2", "tonalRamp": ["#2a2620","#4a4338","#6b6152","#8c8070","#ada08c","#cabfae","#e3dccf","#f4ede2"] },
+      "safelight":   { "role": "primary", "displayName": "Safelight Orange", "canonical": "#ff5a1f", "tonalRamp": ["#3a1608","#5c220b","#8a340f","#b8340f","#e0491a","#ff5a1f","#ff8a3d","#ffc39a"] },
+      "safelight-2": { "role": "primary", "displayName": "Safelight Flare", "canonical": "#ff8a3d", "tonalRamp": ["#3a1e0a","#5c2f10","#8a4718","#b85e20","#e07730","#ff8a3d","#ffab6f","#ffd6b8"] },
+      "acc-magenta": { "role": "secondary", "displayName": "Quinze Magenta", "canonical": "#ff4d8d", "tonalRamp": ["#3a1122","#5c1a35","#8a284f","#b8356a","#e04380","#ff4d8d","#ff85b0","#ffc2d6"] },
+      "acc-ambar":   { "role": "secondary", "displayName": "Casamento Âmbar", "canonical": "#ffb648", "tonalRamp": ["#3a2a0e","#5c4216","#8a6420","#b8842a","#e0a338","#ffb648","#ffcd7f","#ffe6bd"] },
+      "acc-prisma":  { "role": "secondary", "displayName": "Kids Prisma", "canonical": "#ff7a3d", "tonalRamp": ["#3a1c0e","#5c2c14","#8a421d","#b85a26","#e07130","#ff7a3d","#ffa470","#ffd2b5"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display (Bodoni)", "purpose": "Hero and section titles; the emotional voice. Italic accents in safelight." },
+      "headline": { "displayName": "Headline (Bodoni)", "purpose": "Sobre/Contato titles and canister counts." },
+      "body": { "displayName": "Body (Archivo)", "purpose": "Reading copy, ~46–62ch." },
+      "label": { "displayName": "Label (JetBrains Mono)", "purpose": "Film furniture: roll numbers, ISO, frame counters, section tags." }
+    },
+    "shadows": [
+      { "name": "safelight-cast", "value": "0 14px 40px -14px rgba(255,90,31,0.85)", "purpose": "Warm glow under primary shutter/WhatsApp buttons." },
+      { "name": "active-frame-glow", "value": "inset 0 0 0 1px var(--acc), 0 0 34px -6px var(--acc)", "purpose": "Rim-light on the hovered contact-sheet frame." },
+      { "name": "focus-ring", "value": "0 0 0 3px rgba(255,90,31,0.18)", "purpose": "Input focus halo, paired with a safelight border." }
+    ],
+    "motion": [
+      { "name": "ease-out-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Default: reveals, hovers, scroll-to — exponential ease-out from an already-visible state." },
+      { "name": "develop", "value": "filter saturate/contrast/brightness driven by --dev 0→1 on scroll", "purpose": "Signature: photographs develop from a dark latent image to full clarity." }
+    ],
+    "breakpoints": [
+      { "name": "lg", "value": "1024px" },
+      { "name": "sm", "value": "720px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Shutter Button (Primary)",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Hero primary action with a drawn shutter-release ring; presses down on :active like a real shutter.",
+      "html": "<button class=\"ds-shutter\"><span class=\"ds-shutter-ring\"></span>Revelar minha história</button>",
+      "css": ".ds-shutter{display:inline-flex;align-items:center;gap:12px;font-family:Archivo,sans-serif;font-weight:700;font-size:.98rem;color:#1a0b04;background:#ff5a1f;padding:15px 26px 15px 20px;border:none;border-radius:100px;cursor:pointer;box-shadow:0 14px 40px -14px rgba(255,90,31,.85);transition:transform .14s cubic-bezier(.16,1,.3,1),background .35s,box-shadow .35s}.ds-shutter:hover{background:#ff8a3d;box-shadow:0 20px 52px -14px rgba(255,90,31,.95)}.ds-shutter:active{transform:translateY(2px) scale(.985)}.ds-shutter-ring{width:26px;height:26px;border-radius:50%;border:2.5px solid #1a0b04;display:grid;place-items:center}.ds-shutter-ring::after{content:'';width:9px;height:9px;border-radius:50%;background:#1a0b04}"
+    },
+    {
+      "name": "WhatsApp Pill",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Secondary safelight pill with inline WhatsApp glyph.",
+      "html": "<a class=\"ds-wa\" href=\"#\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\" width=\"15\" height=\"15\"><path d=\"M.06 24l1.69-6.16A11.87 11.87 0 1112.06 24a11.9 11.9 0 01-5.69-1.45L.06 24z\"/></svg>WhatsApp</a>",
+      "css": ".ds-wa{display:inline-flex;align-items:center;gap:8px;font-family:Archivo,sans-serif;font-size:.82rem;font-weight:600;color:#1a0b04;background:#ff5a1f;padding:9px 16px;border-radius:100px;text-decoration:none;box-shadow:0 6px 22px -8px rgba(255,90,31,.6);transition:transform .35s cubic-bezier(.16,1,.3,1),background .35s}.ds-wa:hover{transform:translateY(-2px);background:#ff8a3d}"
+    },
+    {
+      "name": "Field Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Dark-fill text field with a safelight focus halo.",
+      "html": "<label class=\"ds-field\"><span>WhatsApp / telefone</span><input type=\"tel\" placeholder=\"(21) 9....\"></label>",
+      "css": ".ds-field span{display:block;font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:hsl(34 16% 64%);margin-bottom:9px}.ds-field input{width:100%;background:#0c0a08;color:#f4ede2;border:1px solid rgba(255,255,255,.16);border-radius:7px;padding:13px 14px;font-family:Archivo,sans-serif;font-size:.98rem;transition:border-color .3s,box-shadow .3s,background .3s}.ds-field input:focus{outline:none;border-color:#ff5a1f;box-shadow:0 0 0 3px rgba(255,90,31,.18);background:#100c09}.ds-field input::placeholder{color:hsl(32 12% 46%)}"
+    },
+    {
+      "name": "Film Canister (Instagram proof)",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Stat card styled as a film canister; light enters (soft radial glow) only on hover.",
+      "html": "<a class=\"ds-canister\" href=\"#\"><div class=\"ds-canister-handle\">@nesiophoto</div><div class=\"ds-canister-count\">31,6 mil</div><div class=\"ds-canister-meta\">441 publicações · seguidores</div></a>",
+      "css": ".ds-canister{position:relative;display:block;background:#100c09;border:1px solid rgba(255,255,255,.10);border-radius:6px;padding:22px;text-decoration:none;overflow:hidden;transition:border-color .4s,transform .4s,background .4s}.ds-canister::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(130% 66% at 50% -14%,rgba(255,90,31,.16),transparent 62%);opacity:0;transition:opacity .45s}.ds-canister:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.16);background:#16110c}.ds-canister:hover::before{opacity:1}.ds-canister-handle{font-family:'JetBrains Mono',monospace;font-size:.74rem;color:#ff8a3d}.ds-canister-count{font-family:'Bodoni Moda',serif;font-size:2.4rem;font-weight:600;margin:10px 0 2px;color:#f4ede2}.ds-canister-meta{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:hsl(32 12% 46%)}"
+    },
+    {
+      "name": "Contact-Sheet Frame (with grease pick)",
+      "kind": "custom",
+      "refersTo": "card",
+      "description": "35mm frame with a black gutter (index tick + frame number). The pick wears a hand-drawn grease-pencil circle — an irregular SVG path, never a geometric ellipse.",
+      "html": "<figure class=\"ds-frame ds-frame--pick\"><span class=\"ds-grease\"><svg viewBox=\"0 0 200 150\" preserveAspectRatio=\"none\"><path d=\"M22,78 C10,32 62,8 110,13 C172,19 198,54 185,95 C175,129 116,142 64,133 C20,126 4,98 24,58\"/></svg></span><div class=\"ds-frame-img\"></div><figcaption class=\"ds-frame-edge\"><svg class=\"ds-tick\" viewBox=\"0 0 8 8\"><path d=\"M1.4 1L6.6 4 1.4 7Z\" fill=\"currentColor\"/></svg>07<span class=\"ds-fr\">A</span></figcaption></figure>",
+      "css": ".ds-frame{position:relative;background:#0a0806;padding:7px 7px 24px;border:1px solid rgba(255,255,255,.04)}.ds-frame-img{aspect-ratio:3/2;background:#16110c}.ds-frame-edge{position:absolute;left:9px;bottom:6px;display:inline-flex;align-items:center;gap:5px;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.16em;color:#ff8a3d}.ds-frame--pick .ds-frame-edge{color:#ff5a1f}.ds-tick{width:7px;height:7px;color:#b8340f}.ds-fr{color:hsl(32 12% 46%);margin-left:1px}.ds-grease{position:absolute;inset:-6px -4px 12px -4px;z-index:3;pointer-events:none;color:#ff5a1f}.ds-grease svg{width:100%;height:100%;overflow:visible}.ds-grease path{fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;filter:drop-shadow(0 0 5px rgba(255,90,31,.5))}"
+    }
+  ],
+  "narrative": {
+    "northStar": "A Câmara Escura",
+    "overview": "The whole system behaves like a photographer's darkroom. The surface is a warm, near-black ground lit from below by an amber safelight; photographs develop from a dark, grainy, low-contrast latent image into full clarity as they enter view. The three services are framed as three rolls of 35mm film shot by one hand, so range never fragments the identity. The register is cinematic and emotional: a high-contrast Bodoni Moda display speaks for memory-laden lines, JetBrains Mono handles the film's furniture, and Archivo does the quiet reading. Ornament is diegetic — sprockets, contact-sheet frames, grease-pencil picks, a light-leak that bleeds only on film edges.",
+    "keyCharacteristics": [
+      "Warm near-black ground with a living amber safelight and grain.",
+      "Photographs develop from dark to clear on scroll (the signature moment).",
+      "35mm film language: sprockets, contact sheets, frame counters, grease-pencil picks.",
+      "Bodoni display for emotion, Mono for film data, Archivo for reading.",
+      "The Instagram gradient exists only as a light leak on film edges."
+    ],
+    "rules": [
+      { "name": "The Safelight Rule", "body": "Full-strength Safelight Orange (#ff5a1f) is rare — primary actions, active picks, and the ambient glow only. Its scarcity is what makes it read as light.", "section": "colors" },
+      { "name": "The Light-Leak Rule", "body": "The pink→purple→orange Instagram gradient appears only as a thin bleed on a film edge. Never a text fill, a card side-stripe, or a background field.", "section": "colors" },
+      { "name": "The Two-Voice Rule", "body": "Bodoni speaks for people and memories; Mono speaks for the film (numbers, ISO, roll IDs). Never swap them.", "section": "typography" },
+      { "name": "The Atmosphere-Not-Boxes Rule", "body": "Convey depth with vignette, glow, and grain. Reserve shadows for real light responses (buttons, active frames); never a flat card drop-shadow.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep the ground warm near-black (#0c0a08) and let the safelight glow do the lighting.",
+      "Do reserve full Safelight Orange for actions, active picks, and the ambient glow.",
+      "Do use the Instagram gradient only as a thin light-leak on a film edge.",
+      "Do split type by voice: Bodoni for people/memory, Mono for film data.",
+      "Do keep every animated reveal visible-by-default and honor prefers-reduced-motion."
+    ],
+    "donts": [
+      "Don't use pure gray for text on the dark ground; tint it warm.",
+      "Don't put a colored stripe on the side or top of a card, or use gradient text.",
+      "Don't stand in a geometric ellipse/mask for the grease-pencil circle; it must be a hand-drawn path.",
+      "Don't animate width/layout properties; animate transform/opacity/filter.",
+      "Don't let mono edge text sit over a photograph; keep it in the black gutter."
+    ]
+  }
+}

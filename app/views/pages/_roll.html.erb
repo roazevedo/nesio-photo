@@ -1,0 +1,79 @@
+<%
+  pick = roll[:frames].find { |f| f[:pick] } || roll[:frames].first
+  wa = whatsapp_url("Oi Nésio! Quero saber sobre #{roll[:titulo]} (#{roll[:handle]}).")
+  cta_label = { "15anos" => "Agendar os 15 anos", "casamentos" => "Falar sobre o casamento", "kids" => "Marcar a festa" }[roll[:key]]
+%>
+<section class="roll" id="<%= roll[:key] %>" data-acc="<%= roll[:cor] %>">
+  <div class="wrap">
+    <div class="roll__label" data-reveal>
+      <span class="roll__canister">
+        <span class="n">ROLO <%= roll[:n] %></span> · <%= roll[:iso] %> · 35mm
+      </span>
+      <span class="roll__ig"><%= roll[:handle] %> — <b><%= roll[:followers] %></b> seguidores</span>
+    </div>
+
+    <div class="roll__head" data-reveal>
+      <h2 class="roll__title display">
+        <span class="alt"><%= roll[:titulo_alt] %></span>
+        <%= roll[:titulo] %>
+      </h2>
+      <div>
+        <p class="roll__lead"><%= roll[:lead] %></p>
+        <p class="roll__body"><%= roll[:corpo] %></p>
+      </div>
+    </div>
+
+    <% hero_block = capture do %>
+      <figure class="roll__hero" data-reveal>
+        <%= image_tag pick[:img], alt: "#{roll[:titulo]} — #{pick[:momento]}", class: "develop", loading: "lazy", data: { parallax: "0.08" } %>
+        <figcaption class="roll__hero-cap">
+          <span class="n">FR <%= pick[:n] %></span> · <%= pick[:momento] %>
+        </figcaption>
+      </figure>
+    <% end %>
+
+    <% sheet_block = capture do %>
+      <div class="sheet" data-reveal aria-label="Contact sheet — <%= roll[:titulo] %>">
+        <% roll[:frames].each do |f| %>
+          <figure class="frame<%= ' frame--pick' if f[:pick] %>">
+            <% if f[:pick] %>
+              <span class="grease" aria-hidden="true">
+                <svg viewBox="0 0 200 150" preserveAspectRatio="none">
+                  <path class="ring" d="M22,78 C10,32 62,8 110,13 C172,19 198,54 185,95 C175,129 116,142 64,133 C20,126 4,98 24,58"/>
+                </svg>
+              </span>
+            <% end %>
+            <div class="frame__img">
+              <%= image_tag f[:img], alt: "#{roll[:titulo]} — #{f[:momento]}", class: "develop", loading: "lazy" %>
+            </div>
+            <figcaption class="frame__edge">
+              <span class="n">
+                <svg class="tick" viewBox="0 0 8 8" aria-hidden="true"><path d="M1.4 1L6.6 4 1.4 7Z" fill="currentColor"/></svg>
+                <%= f[:n] %><span class="fr">A</span>
+              </span>
+            </figcaption>
+          </figure>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if i.odd? %>
+      <%= sheet_block %>
+      <div style="height: clamp(24px, 4vh, 48px)"></div>
+      <%= hero_block %>
+    <% else %>
+      <%= hero_block %>
+      <div style="height: clamp(20px, 3vh, 36px)"></div>
+      <%= sheet_block %>
+    <% end %>
+
+    <div class="roll__cta" data-reveal>
+      <a class="btn-acc" href="<%= wa %>" target="_blank" rel="noopener">
+        <%= render "pages/icon_whatsapp" %> <%= cta_label %>
+      </a>
+      <a class="link-ghost" href="<%= instagram_url(roll[:handle]) %>" target="_blank" rel="noopener">
+        Ver mais em <%= roll[:handle] %>
+      </a>
+    </div>
+  </div>
+</section>

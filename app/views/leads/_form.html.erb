@@ -1,0 +1,50 @@
+<%= form_with model: lead, url: lead_path, class: "card" do |f| %>
+  <% if lead.errors.any? %>
+    <p class="field err" style="margin-bottom:18px">
+      Confira os campos destacados abaixo.
+    </p>
+  <% end %>
+
+  <%= f.hidden_field :origem, value: (lead.origem.presence || "geral") %>
+
+  <%# honeypot anti-spam — humanos não veem %>
+  <div class="honeypot" aria-hidden="true">
+    <label for="lead_apelido">Apelido</label>
+    <%= text_field_tag "lead[apelido]", nil, id: "lead_apelido", tabindex: -1, autocomplete: "off" %>
+  </div>
+
+  <div class="field <%= 'field--bad' if lead.errors[:nome].any? %>">
+    <%= f.label :nome, "Seu nome" %>
+    <%= f.text_field :nome, placeholder: "Como podemos te chamar?", autocomplete: "name", required: true %>
+    <% if lead.errors[:nome].any? %><span class="err"><%= lead.errors[:nome].first %></span><% end %>
+  </div>
+
+  <div class="field <%= 'field--bad' if lead.errors[:telefone].any? %>">
+    <%= f.label :telefone, "WhatsApp / telefone" %>
+    <%= f.telephone_field :telefone, placeholder: "(21) 9....", autocomplete: "tel", required: true %>
+    <% if lead.errors[:telefone].any? %><span class="err"><%= lead.errors[:telefone].first %></span><% end %>
+  </div>
+
+  <div class="field-row">
+    <div class="field <%= 'field--bad' if lead.errors[:tipo_evento].any? %>">
+      <%= f.label :tipo_evento, "Qual celebração?" %>
+      <%= f.select :tipo_evento,
+            options_for_select(
+              [["15 anos", "15anos"], ["Casamento", "casamento"], ["Festa infantil", "kids"], ["Outro", "outro"]],
+              lead.tipo_evento),
+            { prompt: "Escolha…" } %>
+    </div>
+    <div class="field">
+      <%= f.label :data_evento, "Quando? (se já souber)" %>
+      <%= f.text_field :data_evento, placeholder: "Ex.: março de 2027" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :mensagem, "Conte um pouco" %>
+    <%= f.text_area :mensagem, rows: 4, placeholder: "Onde vai ser, quantas pessoas, o que você imagina…" %>
+  </div>
+
+  <%= f.submit "Enviar para o Nésio", class: "submit" %>
+  <p class="form-note">Sem spam. Seus dados vão direto para o Nésio.</p>
+<% end %>

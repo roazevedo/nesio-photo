@@ -1,0 +1,292 @@
+<% wa_geral = whatsapp_url("Oi Nésio! Vim pelo site e quero saber mais sobre o seu trabalho.") %>
+
+<%# Cortina cinematográfica de entrada — obturador de câmera %>
+<div class="intro-curtain" aria-hidden="true">
+  <div class="aperture">
+    <div class="aperture__blade"></div>
+    <div class="aperture__blade"></div>
+    <div class="aperture__blade"></div>
+    <div class="aperture__blade"></div>
+    <div class="aperture__blade"></div>
+    <div class="aperture__blade"></div>
+    <div class="aperture__blade"></div>
+    <div class="aperture__blade"></div>
+    <div class="aperture__ring"></div>
+  </div>
+  <span class="intro-logo">nési<b>o</b></span>
+  <div class="intro-flash"></div>
+</div>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="safelight" aria-hidden="true"></div>
+
+<%# ---------------- NAV ---------------- %>
+<header class="nav" data-nav>
+  <div class="nav__in">
+    <a href="#topo" class="brand" aria-label="Nésio Photo — início">
+      <span class="brand__mark">nési<b>o</b></span>
+      <span class="brand__sub">photo</span>
+    </a>
+    <nav class="nav__links" aria-label="Seções">
+      <a href="#15anos">15 Anos</a>
+      <a href="#casamentos">Casamento</a>
+      <a href="#kids">Kids</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a class="btn-wa" href="<%= wa_geral %>" target="_blank" rel="noopener">
+      <%= render "pages/icon_whatsapp" %> WhatsApp
+    </a>
+    <a class="nav__toggle" href="#contato">Contato</a>
+  </div>
+</header>
+
+<main id="topo">
+  <%# ---------------- HERO ---------------- %>
+  <section class="hero">
+    <div class="hero__leak" aria-hidden="true"></div>
+    <div class="hero__rail filmrail" aria-hidden="true">
+      <span class="count">Fotografia · Videografia · desde 2009</span>
+      <span class="iso">Nova Iguaçu · RJ</span>
+    </div>
+
+    <div class="hero__stage" aria-hidden="true">
+      <% hero_frames = [
+           { img: "fotos/15anos/quinze-01.jpg", alt: "Retrato de 15 anos sob luz colorida" },
+           { img: "fotos/casamentos/casamento-01.jpg", alt: "Casal no altar em luz dourada" },
+           { img: "fotos/kids/kids-04.jpg", alt: "Retrato de criança em festa" }
+         ] %>
+      <% hero_frames.each_with_index do |f, i| %>
+        <div class="hero__frame<%= ' is-live' if i.zero? %>" data-hero-frame>
+          <%= image_tag f[:img], alt: f[:alt], loading: (i.zero? ? "eager" : "lazy") %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="hero__content">
+      <h1 class="hero__title display">
+        Imagens que<br><em>contam histórias.</em>
+      </h1>
+      <p class="hero__lede">
+        Há mais de 15 anos o Nésio revela os capítulos que uma família nunca quer esquecer —
+        os 15 anos, o casamento, a festa dos pequenos.
+      </p>
+      <div class="hero__cta">
+        <button type="button" class="shutter" data-scroll-to="#contato">
+          <span class="shutter__ring"></span>
+          Revelar minha história
+        </button>
+        <a class="link-ghost" href="<%= wa_geral %>" target="_blank" rel="noopener">
+          <%= render "pages/icon_whatsapp" %> Chamar no WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="scrollcue" aria-hidden="true">
+      <span>role</span>
+      <span class="bar"></span>
+    </div>
+  </section>
+
+  <%# ---------------- SCROLL VIDEO 3D (Google Flow) ---------------- %>
+  <section class="scroll-video" data-scroll-video>
+    <div class="scroll-video__sticky">
+      <%# Vídeo que avança conforme o scroll %>
+      <video
+        class="scroll-video__player"
+        data-scroll-video-player
+        src="/videos/film-scroll-optimized.mp4"
+        muted
+        playsinline
+        preload="auto"
+      ></video>
+
+      <%# Textos cinematográficos que aparecem em momentos específicos %>
+      <div class="scroll-video__text scroll-video__text--1" data-scroll-text="1">
+        A técnica é <em>precisa.</em>
+      </div>
+      <div class="scroll-video__text scroll-video__text--2" data-scroll-text="2">
+        O olhar é <em>único.</em>
+      </div>
+      <div class="scroll-video__text scroll-video__text--3" data-scroll-text="3">
+        A história é <em>sua.</em>
+      </div>
+
+      <div class="scroll-video__hint">
+        <span>role para animar</span>
+        <span class="arrow"></span>
+      </div>
+    </div>
+  </section>
+
+  <%# ---------------- MANIFESTO ---------------- %>
+  <section class="manifesto">
+    <div class="wrap manifesto__grid">
+      <p class="manifesto__lead display" data-reveal>
+        Um fotógrafo. <b>Três capítulos</b> da mesma vida.
+      </p>
+      <div class="manifesto__body" data-reveal>
+        <p>
+          A festa de aniversário da criança. O baile de 15 anos. O altar. São três celebrações
+          diferentes — e um só olhar por trás delas.
+        </p>
+        <p>
+          Não é um perfil solto no Instagram para cada evento: é uma câmara escura onde a mesma
+          mão revela a história inteira, do primeiro balão à valsa e ao "sim".
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <%# ---------------- GALERIA HORIZONTAL ---------------- %>
+  <section class="hgallery" data-hgallery>
+    <div class="hgallery__sticky">
+      <div class="hgallery__intro">
+        <span class="tag">Portfólio</span>
+        <h2>Momentos que <em>ficam</em> para sempre.</h2>
+      </div>
+
+      <div class="hgallery__track" data-hgallery-track>
+        <% gallery_items = [
+             { img: "fotos/15anos/quinze-01.jpg", caption: "15 Anos", title: "A noite mais esperada" },
+             { img: "fotos/casamentos/casamento-01.jpg", caption: "Casamento", title: "O primeiro olhar" },
+             { img: "fotos/kids/kids-04.jpg", caption: "Kids", title: "A alegria pura" },
+             { img: "fotos/15anos/quinze-02.jpg", caption: "15 Anos", title: "Luz e cor" },
+             { img: "fotos/casamentos/casamento-02.jpg", caption: "Casamento", title: "A emoção do dia" },
+             { img: "fotos/kids/kids-01.jpg", caption: "Kids", title: "Festa e diversão" }
+           ] %>
+        <% gallery_items.each do |item| %>
+          <div class="hgallery__item">
+            <div class="hgallery__img">
+              <%= image_tag item[:img], alt: item[:title], loading: "lazy" %>
+            </div>
+            <div class="hgallery__caption"><%= item[:caption] %></div>
+            <div class="hgallery__title"><%= item[:title] %></div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="hgallery__progress">
+        <div class="hgallery__progress-bar" data-hgallery-progress></div>
+      </div>
+
+      <div class="ring-deco ring-deco--1" aria-hidden="true"></div>
+      <div class="ring-deco ring-deco--2" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <%# ---------------- ROLOS ---------------- %>
+  <% @rolls.each_with_index do |roll, i| %>
+    <%= render "pages/roll", roll: roll, i: i %>
+  <% end %>
+
+  <%# ---------------- SOBRE ---------------- %>
+  <section class="sobre" id="sobre">
+    <div class="wrap sobre__grid">
+      <div class="sobre__portrait" data-reveal>
+        <%= image_tag "fotos/casamentos/casamento-02.jpg", alt: "Momento capturado por Nésio Photo, em preto e branco", loading: "lazy" %>
+        <span class="stamp">Nésio Photo · Nova Iguaçu — RJ</span>
+      </div>
+      <div data-reveal>
+        <span class="tag">Sobre</span>
+        <h2 class="sobre__title display">Quinze anos <em>revelando</em> histórias.</h2>
+        <div class="sobre__body">
+          <p>
+            Nésio faz fotografia há mais de 15 anos. Especialista em 15 anos, ele leva a mesma sensibilidade para casamentos e para
+            as festas da criançada.
+          </p>
+          <p>
+            A câmera é só a ferramenta. O trabalho é enxergar o instante certo — a luz antes da
+            entrada, a lágrima do pai, a correria atrás do bolo — e guardar do jeito que aconteceu,
+            para a família reviver por muito tempo.
+          </p>
+        </div>
+        <p class="sobre__sign">— Nésio</p>
+      </div>
+    </div>
+  </section>
+
+  <%# ---------------- PROVA ---------------- %>
+  <section class="prova">
+    <div class="wrap">
+      <div class="prova__head" data-reveal>
+        <h3 class="display">Onde as histórias já vivem.</h3>
+      </div>
+      <div class="canisters" data-reveal data-stagger>
+        <% @rolls.each_with_index do |roll, idx| %>
+          <a class="canister" style="--i: <%= idx %>" href="<%= instagram_url(roll[:handle]) %>" target="_blank" rel="noopener">
+            <span class="canister__go" aria-hidden="true"><%= render "pages/icon_arrow_ne" %></span>
+            <div class="canister__handle"><%= roll[:handle] %></div>
+            <div class="canister__count display"><%= roll[:followers] %></div>
+            <div class="canister__meta"><%= roll[:posts] %> publicações · seguidores</div>
+          </a>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <%# ---------------- CONTATO ---------------- %>
+  <section class="contato" id="contato">
+    <div class="wrap contato__grid">
+      <div data-reveal>
+        <span class="tag">Contato</span>
+        <h2 class="contato__title display">Revele a <em>sua</em> história.</h2>
+        <p class="contato__lead">
+          Conta pra gente o que vem por aí — 15 anos, casamento ou a festa dos pequenos.
+          O Nésio responde pessoalmente.
+        </p>
+
+        <div class="contato__wa">
+          <div class="lbl">Prefere agora?</div>
+          <a class="btn-wa" href="<%= wa_geral %>" target="_blank" rel="noopener">
+            <%= render "pages/icon_whatsapp" %> Falar no WhatsApp
+          </a>
+        </div>
+
+        <div class="contato__meta">
+          <div><span class="k">onde</span>Nova Iguaçu — Rio de Janeiro</div>
+          <div><span class="k">insta</span><a href="<%= instagram_url('@nesiophoto') %>" target="_blank" rel="noopener">@nesiophoto</a></div>
+          <div><span class="k">horas</span>Atende a Baixada e o Grande Rio</div>
+        </div>
+      </div>
+
+      <div data-reveal>
+        <%= turbo_frame_tag "form-contato" do %>
+          <%= render "leads/form", lead: @lead %>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <%# ---------------- FOOTER ---------------- %>
+  <footer class="footer">
+    <div class="footer__leak" aria-hidden="true"></div>
+    <div class="wrap footer__grid">
+      <div class="footer__brand">
+        <span class="brand__mark">nési<b>o</b> <span style="font-family:var(--mono);font-size:.6rem;letter-spacing:.28em;color:var(--ink-faint)">PHOTO</span></span>
+        <p class="footer__tag">Há mais de 15 anos criando imagens que contam histórias. Nova Iguaçu — RJ.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Verticais</h4>
+        <a href="#15anos">15 Anos</a>
+        <a href="#casamentos">Casamento</a>
+        <a href="#kids">Festas Infantis</a>
+      </div>
+      <div class="footer__col">
+        <h4>Instagram</h4>
+        <a href="<%= instagram_url('@nesiophoto') %>" target="_blank" rel="noopener">@nesiophoto</a>
+        <a href="<%= instagram_url('@nesiophotowedding') %>" target="_blank" rel="noopener">@nesiophotowedding</a>
+        <a href="<%= instagram_url('@nesiophotokids') %>" target="_blank" rel="noopener">@nesiophotokids</a>
+      </div>
+      <div class="footer__col">
+        <h4>Contato</h4>
+        <a href="<%= wa_geral %>" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="#contato">Formulário</a>
+      </div>
+    </div>
+    <div class="wrap footer__base">
+      <span>© <%= Date.current.year %> Nésio Photo</span>
+      <span>Câmara escura · 35mm · Baixada Fluminense</span>
+    </div>
+  </footer>
+</main>
