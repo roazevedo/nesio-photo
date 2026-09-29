@@ -1029,17 +1029,257 @@ section { position: relative; scroll-margin-top: var(--nav-h); }
   .canisters { grid-template-columns: 1fr; }
 }
 @media (max-width: 720px) {
-  :root { --nav-h: 64px; }
+  :root { --nav-h: 64px; --pad: 16px; }
+
+  /* ---- NAV MOBILE ---- */
   .nav__links { display: none; }
+  .nav__in { gap: 12px; }
+  .btn-wa { padding: 8px 12px; font-size: 0.76rem; }
+  .btn-wa svg { width: 14px; height: 14px; }
   .nav__toggle {
     display: inline-flex; align-items: center; gap: 8px; background: none; border: 1px solid var(--line-2);
     color: var(--ink); border-radius: 100px; padding: 8px 14px; font-size: 0.82rem; cursor: pointer;
   }
-  .hero { grid-template-columns: 30px 1fr; }
-  .hero__rail .count { letter-spacing: 0.24em; font-size: 0.54rem; }
-  .field-row { grid-template-columns: 1fr; }
-  .footer__grid { flex-direction: column; }
-  .sheet { grid-auto-columns: minmax(150px, 78%); }
+  .brand__mark { font-size: 1.15rem; }
+  .brand__sub { font-size: 0.5rem; }
+
+  /* ---- HERO MOBILE ---- */
+  .hero { grid-template-columns: 24px 1fr; min-height: 100svh; }
+  .hero__rail .count { letter-spacing: 0.2em; font-size: 0.5rem; top: calc(var(--nav-h) + 12px); }
+  .hero__rail .iso { font-size: 0.5rem; bottom: 16px; }
+  .hero__content { padding: calc(var(--nav-h) + 2vh) var(--pad) 10vh; }
+  .hero__title { font-size: clamp(2rem, 10vw, 3rem); }
+  .hero__lede { font-size: 0.95rem; margin-top: 20px; max-width: 100%; }
+  .hero__cta { margin-top: 28px; flex-direction: column; align-items: stretch; gap: 12px; }
+  .shutter { justify-content: center; padding: 14px 20px; font-size: 0.92rem; }
+  .link-ghost { justify-content: center; padding: 12px 0; }
+  .scrollcue { bottom: 16px; }
+  .scrollcue .bar { height: 30px; }
+
+  /* ---- SCROLL VIDEO MOBILE ---- */
+  .scroll-video { height: 300vh; }
+  .scroll-video__text { font-size: clamp(1.4rem, 6vw, 2rem); padding: 0 var(--pad); }
+  .scroll-video__text--1 { top: 15%; }
+  .scroll-video__text--2 { top: 45%; }
+  .scroll-video__text--3 { top: 75%; }
+  .scroll-video__hint { bottom: 20px; }
+
+  /* ---- MANIFESTO MOBILE ---- */
+  .manifesto { padding: clamp(60px, 10vh, 100px) 0; }
+  .manifesto__lead { font-size: clamp(1.3rem, 5vw, 1.8rem); max-width: 100%; }
+  .manifesto__body { font-size: 0.95rem; }
+
+  /* ---- HORIZONTAL GALLERY MOBILE ---- */
+  .hgallery { height: auto; min-height: auto; }
+  .hgallery__sticky {
+    position: relative;
+    height: auto;
+    flex-direction: column;
+    padding: clamp(60px, 8vh, 100px) 0;
+  }
+  .hgallery__intro {
+    position: relative;
+    left: auto; top: auto;
+    transform: none;
+    max-width: 100%;
+    padding: 0 var(--pad);
+    margin-bottom: 30px;
+    pointer-events: auto;
+  }
+  .hgallery__intro h2 { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+  .hgallery__track {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 var(--pad);
+    gap: 16px;
+    transform: none !important;
+  }
+  .hgallery__item {
+    flex: 0 0 auto;
+    width: 75vw;
+    max-width: 300px;
+    scroll-snap-align: center;
+  }
+  .hgallery__img { aspect-ratio: 3/4; }
+  .hgallery__caption { margin-top: 12px; font-size: 0.62rem; }
+  .hgallery__title { font-size: 1rem; }
+  .hgallery__progress { display: none; }
+  .ring-deco { display: none; }
+
+  /* ---- ROLLS MOBILE ---- */
+  .roll { padding: clamp(50px, 8vh, 80px) 0; }
+  .roll__head { grid-template-columns: 1fr; gap: 16px; }
+  .roll__title { font-size: clamp(2rem, 9vw, 3rem); }
+  .roll__title .alt { font-size: 0.6rem; margin-bottom: 10px; }
+  .roll__lead { font-size: clamp(1rem, 4vw, 1.2rem); }
+  .roll__body { font-size: 0.92rem; }
+  .roll__hero { aspect-ratio: 4/3; margin-bottom: 20px; }
+  .roll__hero-cap { font-size: 0.58rem; left: 12px; bottom: 12px; }
+  .sheet {
+    grid-auto-columns: minmax(140px, 70vw);
+    gap: 8px;
+    padding: 10px;
+  }
+  .frame { padding: 5px 5px 18px; }
+  .frame__edge { font-size: 0.54rem; left: 6px; right: 6px; bottom: 4px; }
+  .roll__cta { margin-top: 20px; gap: 10px; flex-direction: column; }
+  .btn-acc { justify-content: center; padding: 12px 18px; font-size: 0.86rem; }
+  .roll__label { gap: 8px; }
+  .roll__canister { font-size: 0.6rem; padding: 5px 10px; }
+  .roll__ig { font-size: 0.58rem; }
+
+  /* ---- SOBRE MOBILE ---- */
+  .sobre { padding: clamp(50px, 8vh, 100px) 0; }
+  .sobre__grid { grid-template-columns: 1fr; gap: 30px; }
+  .sobre__portrait { max-width: 100%; aspect-ratio: 1/1; }
+  .sobre__title { font-size: clamp(1.6rem, 6vw, 2.2rem); margin-bottom: 20px; }
+  .sobre__body { font-size: 0.95rem; }
+  .sobre__sign { font-size: 1.2rem; margin-top: 20px; }
+
+  /* ---- PROVA (CANISTERS) MOBILE ---- */
+  .prova { padding: clamp(50px, 7vh, 80px) 0; }
+  .prova__head h3 { font-size: clamp(1.2rem, 5vw, 1.6rem); }
+  .canisters { grid-template-columns: 1fr; gap: 12px; }
+  .canister { padding: 18px; }
+  .canister__handle { font-size: 0.68rem; }
+  .canister__count { font-size: clamp(1.5rem, 6vw, 2rem); }
+  .canister__meta { font-size: 0.56rem; }
+  .canister__go { top: 16px; right: 16px; }
+
+  /* ---- CONTATO MOBILE ---- */
+  .contato { padding: clamp(50px, 8vh, 100px) 0 clamp(40px, 6vh, 80px); }
+  .contato__grid { grid-template-columns: 1fr; gap: 30px; }
+  .contato__title { font-size: clamp(1.8rem, 7vw, 2.6rem); margin-bottom: 16px; }
+  .contato__lead { font-size: 0.95rem; }
+  .contato__wa { margin-top: 24px; padding-top: 20px; }
+  .contato__wa .btn-wa { width: 100%; justify-content: center; }
+  .contato__meta { font-size: 0.68rem; gap: 8px; }
+  .card { padding: clamp(18px, 4vw, 28px); }
+  .card::before { left: 16px; right: 16px; }
+  .field { margin-bottom: 16px; }
+  .field label { font-size: 0.6rem; margin-bottom: 7px; }
+  .field input, .field select, .field textarea { padding: 12px; font-size: 0.92rem; }
+  .field textarea { min-height: 80px; }
+  .field-row { grid-template-columns: 1fr; gap: 16px; }
+  .submit { padding: 14px; font-size: 0.92rem; }
+  .form-note { font-size: 0.54rem; }
+  .sucesso__ring { width: 48px; height: 48px; }
+  .sucesso__ring svg { width: 22px; height: 22px; }
+  .sucesso h3 { font-size: 1.4rem; }
+  .sucesso p { font-size: 0.9rem; }
+
+  /* ---- FOOTER MOBILE ---- */
+  .footer { padding: 40px 0 32px; }
+  .footer__grid { flex-direction: column; gap: 24px; }
+  .footer__brand .brand__mark { font-size: 1.4rem; }
+  .footer__tag { font-size: 0.82rem; margin-top: 8px; }
+  .footer__col { width: 100%; }
+  .footer__col h4 { margin-bottom: 10px; }
+  .footer__col a { font-size: 0.85rem; margin-bottom: 7px; }
+  .footer__base {
+    margin-top: 30px;
+    padding-top: 18px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+  }
+
+  /* ---- INTRO CURTAIN MOBILE ---- */
+  .intro-curtain .intro-logo { font-size: clamp(2rem, 12vw, 3rem); }
+  .aperture__ring { width: min(70vw, 70vh); height: min(70vw, 70vh); }
+}
+
+/* Extra small devices (phones in portrait, < 480px) */
+@media (max-width: 480px) {
+  :root { --pad: 14px; }
+
+  .hero__title { font-size: clamp(1.8rem, 9vw, 2.4rem); }
+  .hero__lede { font-size: 0.88rem; line-height: 1.55; }
+  .hero__cta { margin-top: 24px; }
+  .shutter { padding: 12px 16px; font-size: 0.86rem; }
+  .shutter__ring { width: 22px; height: 22px; }
+  .shutter__ring::after { width: 7px; height: 7px; }
+
+  .scroll-video__text { font-size: clamp(1.2rem, 5vw, 1.6rem); }
+
+  .manifesto__lead { font-size: clamp(1.1rem, 5vw, 1.5rem); }
+  .manifesto__body { font-size: 0.88rem; }
+
+  .hgallery__intro h2 { font-size: clamp(1.4rem, 6vw, 1.8rem); }
+  .hgallery__item { width: 80vw; }
+
+  .roll__title { font-size: clamp(1.6rem, 8vw, 2.2rem); }
+  .roll__lead { font-size: 0.95rem; }
+  .sheet { grid-auto-columns: minmax(130px, 75vw); padding: 8px; }
+
+  .sobre__title { font-size: clamp(1.4rem, 6vw, 1.8rem); }
+  .sobre__body { font-size: 0.88rem; }
+
+  .contato__title { font-size: clamp(1.5rem, 7vw, 2rem); }
+  .card { padding: 16px; }
+
+  .footer__brand .brand__mark { font-size: 1.2rem; }
+}
+
+/* Tablet landscape adjustments (768px - 1024px) */
+@media (min-width: 721px) and (max-width: 1024px) {
+  .hero__title { font-size: clamp(2.4rem, 6vw, 4rem); }
+  .hero__lede { max-width: 40ch; }
+
+  .hgallery__intro { max-width: 300px; }
+  .hgallery__intro h2 { font-size: clamp(1.8rem, 3.5vw, 2.4rem); }
+  .hgallery__item { width: clamp(220px, 35vw, 380px); }
+
+  .sobre__grid { gap: 40px; }
+  .contato__grid { gap: 40px; }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Larger touch targets */
+  .nav__links a { padding: 8px 4px; }
+  .btn-wa { min-height: 44px; }
+  .shutter { min-height: 48px; }
+  .link-ghost { min-height: 44px; }
+  .btn-acc { min-height: 44px; }
+  .submit { min-height: 48px; }
+  .canister { min-height: 80px; }
+
+  /* Remove hover effects that don't work on touch */
+  .frame:hover .frame__img img { transform: none; }
+  .hgallery__item:hover .hgallery__img img { transform: none; }
+  .frame:hover::before { opacity: 0; }
+  .hgallery__item:hover .hgallery__img::after { opacity: 0; }
+
+  /* Active states for touch feedback */
+  .shutter:active { transform: scale(0.97); }
+  .btn-wa:active { transform: scale(0.97); }
+  .btn-acc:active { transform: scale(0.97); }
+  .canister:active { transform: scale(0.98); }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 900px) and (orientation: landscape) {
+  .hero { min-height: 100svh; }
+  .hero__content { padding-top: calc(var(--nav-h) + 1vh); padding-bottom: 6vh; }
+  .hero__title { font-size: clamp(1.6rem, 5vw, 2.4rem); }
+  .hero__lede { margin-top: 12px; font-size: 0.88rem; }
+  .hero__cta { margin-top: 16px; flex-direction: row; }
+  .scrollcue { display: none; }
+
+  .scroll-video__sticky { min-height: 100svh; }
+  .intro-curtain .intro-logo { font-size: clamp(1.8rem, 6vw, 2.5rem); }
+}
+
+/* Safe area insets for notched devices */
+@supports (padding: max(0px)) {
+  .nav__in { padding-left: max(var(--pad), env(safe-area-inset-left)); padding-right: max(var(--pad), env(safe-area-inset-right)); }
+  .wrap { padding-left: max(var(--pad), env(safe-area-inset-left)); padding-right: max(var(--pad), env(safe-area-inset-right)); }
+  .footer__base { padding-bottom: max(22px, env(safe-area-inset-bottom)); }
 }
 
 @media (prefers-reduced-motion: reduce) {

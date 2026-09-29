@@ -7,6 +7,14 @@ const root = document.documentElement
 const clamp = (min, v, max) => Math.max(min, Math.min(v, max))
 const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
+// ---- Scroll to top on page refresh ----
+// Desativa restauração automática do scroll pelo navegador
+if ("scrollRestoration" in history) {
+  history.scrollRestoration = "manual"
+}
+// Força scroll para o topo imediatamente
+window.scrollTo(0, 0)
+
 function init() {
   root.classList.add("js")
 
