@@ -3,7 +3,7 @@
 ## Resumo
 Site de portfólio para o fotógrafo Nésio de Nova Iguaçu, RJ. Tema visual "Câmara Escura" com estética cinematográfica.
 
-## Status: Pronto para apresentação ao cliente
+## Status: Pronto para apresentação ao cliente (desktop + mobile)
 
 ## Última sessão: 2026-09-29
 
@@ -47,6 +47,14 @@ Site de portfólio para o fotógrafo Nésio de Nova Iguaçu, RJ. Tema visual "C�
 - Texto que sobe e desvanece
 - Revelação de fotos (develop effect)
 
+#### 6. Responsividade Mobile (IMPLEMENTADO em 2026-09-29)
+- Breakpoints: 720px (smartphones), 480px (telas pequenas), 721-1024px (tablets)
+- Galeria horizontal convertida para scroll nativo com snap em mobile
+- Touch device optimizations (áreas de toque maiores, feedback visual)
+- Suporte para orientação landscape em mobile
+- Safe area insets para dispositivos com notch (iPhone)
+- Scroll automático para o topo ao recarregar a página
+
 ### Arquivos principais modificados:
 - `app/assets/stylesheets/nesio.css` — estilos completos
 - `app/javascript/nesio.js` — animações e interações
@@ -63,5 +71,6 @@ Site de portfólio para o fotógrafo Nésio de Nova Iguaçu, RJ. Tema visual "C�
 ### Próximos passos sugeridos:
 - Criar animação 3D no Google Flow e integrar o vídeo
 - Adicionar mais fotos reais do Nésio
-- Ajustar responsividade mobile
+- ~~Ajustar responsividade mobile~~ ✅ FEITO
 - Testar performance
+- Deploy para produção
