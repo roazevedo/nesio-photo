@@ -3,9 +3,11 @@
 ## Resumo
 Site de portfólio para o fotógrafo Nésio de Nova Iguaçu, RJ. Tema visual "Câmara Escura" com estética cinematográfica.
 
-## Status: Em desenvolvimento
+## Status: Pronto para apresentação ao cliente
 
 ## Última sessão: 2026-09-29
+
+## Repositório: https://github.com/roazevedo/nesio-photo (privado)
 
 ### O que foi implementado:
 
